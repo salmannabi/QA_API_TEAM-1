@@ -33,7 +33,7 @@ DOM.buttonType.onclick = () => getByType(DOM.input.value);
 //read by participants
 const getByParticipants = (participants) => {
     DOM.output.innerHTML = ``;
-    axios.get(`http://www.boredapi.com/api/activity?participants=${parseInt(participants)}`)
+    axios.get(`http://www.boredapi.com/api/activity?participants=${participants}`)
         .then((response) => {
             DOM.output.innerHTML = JSON.stringify(response.data);//write to output
             console.log(response.data);
@@ -43,7 +43,7 @@ const getByParticipants = (participants) => {
 }
 
 DOM.buttonParticipants.onclick = () => {
-    if (Number.isInteger(DOM.input.value)) {
+    if (Number.isInteger(parseInt(DOM.input.value))) {
         getByParticipants(DOM.input.value);
     } else {
         DOM.output.innerHTML = "Invalid Input"
@@ -52,13 +52,22 @@ DOM.buttonParticipants.onclick = () => {
 }
 
 //read by max price
-const getByMaxPrice = (MaxPrice) => {
+const getByMaxPrice = (maxPrice) => {
     DOM.output.innerHTML = ``;
-    axios.get(`http://www.boredapi.com/api/activity?participants=${parseInt(participants)}`)
+    axios.get(`http://www.boredapi.com/api/activity?minprice=0&maxprice=${maxPrice}`)
         .then((response) => {
             DOM.output.innerHTML = JSON.stringify(response.data);//write to output
             console.log(response.data);
         }).catch((err) => {
             console.log(err);
         });
+}
+
+DOM.buttonPrice.onclick = () => {
+    if (Number.isInteger(DOM.inputNumber.value * 100)) {
+        getByMaxPrice(DOM.inputNumber.value);
+    } else {
+        DOM.output.innerHTML = "Invalid Input"
+        console.log("Input must be currency format");
+    }
 }
