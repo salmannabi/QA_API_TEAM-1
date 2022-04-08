@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+body{
+    background-color: darkslategray;
+    color: whitesmoke;
+    font-family: "Roboto+Condensed";
+    font-weight: 400;
+}
+.nav-link{
+    color: whitesmoke;
+}
+.nav-link:hover{
+    color: grey;
+}
+.input{
+    margin: 0 auto;
+}
