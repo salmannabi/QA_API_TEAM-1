@@ -16,7 +16,7 @@ const getRandom = () => {
 
 DOM.buttonRandom.onclick = () => getRandom();
 
-//read by type (drop down menu maybe)
+//read by type
 const getByType = (type) => {
     DOM.output.innerHTML = ``;
     axios.get(`http://www.boredapi.com/api/activity?type=${type.toLowerCase()}`)
@@ -28,7 +28,7 @@ const getByType = (type) => {
         });
 }
 
-DOM.buttonType.onclick = () => getByType(DOM.input.value);
+DOM.buttonType.onclick = () => getByType(DOM.type.value);
 
 //read by participants
 const getByParticipants = (participants) => {
