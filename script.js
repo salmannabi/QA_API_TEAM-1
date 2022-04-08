@@ -9,8 +9,9 @@ const getRandom = () => {
         .then((response) => {
             let data = response.data;//write to output
             let str = `Activity: ${data.activity}<br>Type: ${data.type}<br>
-            Participants: ${data.participants}<br>Price: ${data.price}<br>Link: ${data.link}`;
+            Participants: ${data.participants}<br>Price: ${data.price}<br>Link: ${data.link || "No link available"}`;
             DOM.output.innerHTML = str;
+            console.log(response.data);
         }).catch((err) => {
             console.log(err);
         });
@@ -23,7 +24,10 @@ const getByType = (type) => {
     DOM.output.innerHTML = ``;
     axios.get(`http://www.boredapi.com/api/activity?type=${type.toLowerCase()}`)
         .then((response) => {
-            DOM.output.innerHTML = JSON.stringify(response.data);//write to output
+            let data = response.data;//write to output
+            let str = `Activity: ${data.activity}<br>Type: ${data.type}<br>
+            Participants: ${data.participants}<br>Price: ${data.price}<br>Link: ${data.link || "No link available"}`;
+            DOM.output.innerHTML = str;
             console.log(response.data);
         }).catch((err) => {
             console.log(err);
@@ -37,7 +41,10 @@ const getByParticipants = (participants) => {
     DOM.output.innerHTML = ``;
     axios.get(`http://www.boredapi.com/api/activity?participants=${participants}`)
         .then((response) => {
-            DOM.output.innerHTML = JSON.stringify(response.data);//write to output
+            let data = response.data;//write to output
+            let str = `Activity: ${data.activity}<br>Type: ${data.type}<br>
+            Participants: ${data.participants}<br>Price: ${data.price}<br>Link: ${data.link || "No link available"}`;
+            DOM.output.innerHTML = str;
             console.log(response.data);
         }).catch((err) => {
             console.log(err);
@@ -58,8 +65,10 @@ const getByMaxPrice = (maxPrice) => {
     DOM.output.innerHTML = ``;
     axios.get(`http://www.boredapi.com/api/activity?minprice=0&maxprice=${maxPrice}`)
         .then((response) => {
-            DOM.output.innerHTML = JSON.stringify(response.data);//write to output
-            console.log(response.data);
+            let data = response.data;//write to output
+            let str = `Activity: ${data.activity}<br>Type: ${data.type}<br>
+            Participants: ${data.participants}<br>Price: ${data.price}<br>Link: ${data.link || "No link available"}`;
+            DOM.output.innerHTML = str;
         }).catch((err) => {
             console.log(err);
         });
