@@ -7,8 +7,10 @@ const getRandom = () => {
     DOM.output.innerHTML = ``;
     axios.get(`http://www.boredapi.com/api/activity/`)
         .then((response) => {
-            DOM.output.innerHTML = JSON.stringify(response.data);//write to output
-            console.log(response.data);
+            let data = response.data;//write to output
+            let str = `Activity: ${data.activity}<br>Type: ${data.type}<br>
+            Participants: ${data.participants}<br>Price: ${data.price}<br>Link: ${data.link}`;
+            DOM.output.innerHTML = str;
         }).catch((err) => {
             console.log(err);
         });
