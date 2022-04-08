@@ -5,3 +5,4 @@ export const buttonPrice = document.getElementById(`buttonPrice`);
 export const output = document.getElementById(`output`);
 export const input = document.getElementById(`input`);
 export const inputNumber = document.getElementById(`inputNumber`);
+export const type = document.getElementById(`type`);
